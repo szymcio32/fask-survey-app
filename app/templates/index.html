@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <img class="mx-auto d-block" alt="Company logo" src="{{ url_for('static', filename='logo.png') }}">
+        <div class="title">
+            <h1 class="page-header text-center text-uppercase">Event Feedback Survey App</h1>
+        </div>
+
+        {% if error %}
+            <h4><strong>Error:</strong> {{ error }}</h4>
+        {% endif %}
+
+        <form method="post">
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6">
+                    <h3>What is your name?</h3>
+                    <input class="form-control" type="text" name="name" required>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6">
+                    <h3>What is your email address?</h3>
+                    <input class="form-control" type="text" name="name" required>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-3">
+                    <h3>Gender</h3>
+                    <select id="gender" class="form-control" name="gender">
+                        <option hidden disabled selected value></option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <h3>Age</h3>
+                    <select id="age" class="form-control" name="age">
+                        <option hidden disabled selected value></option>
+                        <option value="20"><20</option>
+                        <option value="20-40">20-40</option>
+                        <option value="40-60">40-60</option>
+                        <option value="60">60<</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6 text-center">
+                    <h3>How would you recommend the event to a friend?</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-1" value="1">
+                        <label class="form-check-label" for="option-1">1</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-2" value="2">
+                        <label class="form-check-label" for="option-2">2</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-3" value="3">
+                        <label class="form-check-label" for="option-3">3</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-4" value="4">
+                        <label class="form-check-label" for="option-4">4</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-5" value="5">
+                        <label class="form-check-label" for="option-5">5</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-6" value="6">
+                        <label class="form-check-label" for="option-6">6</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-7" value="7">
+                        <label class="form-check-label" for="option-7">7</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-8" value="8">
+                        <label class="form-check-label" for="option-8">8</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-9" value="9">
+                        <label class="form-check-label" for="option-9">9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="recommendation" id="option-10" value="10">
+                        <label class="form-check-label" for="option-10">10</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6">
+                    <h3>What did you like about event:</h3>
+                    <textarea class="form-control" name="like" rows="10"></textarea>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6">
+                    <h3>What did you dislike about event:</h3>
+                    <textarea class="form-control" name="dislike" rows="10"></textarea>
+                </div>
+            </div>
+
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6 text-center">
+                    <h3>How organized was the event:</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="organization" id="excellent" value="excellent">
+                        <label class="form-check-label" for="excellent">Excellent</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="organization" id="good" value="good">
+                        <label class="form-check-label" for="good">Good</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="organization" id="fair" value="fair">
+                        <label class="form-check-label" for="fair">Fair</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="organization" id="poor" value="poor">
+                        <label class="form-check-label" for="poor">Poor</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row justify-content-md-center wrapper">
+                <div class="form-group col-md-6 text-center">
+                    <h3>How helpful was the staff:</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="helpful" id="very" value="very helpful">
+                        <label class="form-check-label" for="very">Very helpful</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="helpful" id="somewhat" value="somewhat helpful">
+                        <label class="form-check-label" for="somewhat">Somewhat helpful</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="helpful" id="not" value="not so helpful">
+                        <label class="form-check-label" for="not">Not so helpful</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+        </form>
+    </div>
+{% endblock content %}
