@@ -1,7 +1,13 @@
+body{
+    background-color: #CCFFFC;
+}
 h3{
     font-size: 1.5rem;
     margin-bottom: 30px;
     text-align: center;
+}
+header a{
+    font-size:22px;
 }
 .title{
     padding: 40px;
@@ -11,17 +17,39 @@ h3{
     margin: 50px auto;
 }
 input[type="radio"]{
-    opacity: 0;
+    display: none;
 }
-label[for="very"], label[for="somewhat"], label[for="not"]{
-    padding-left: 30px;
+.custom-label-icon{
+    padding-left: 25px;
     background: url(unchecked-radio-button.png) no-repeat;
     line-height: 20px;
     padding-bottom: 10px;
     cursor: pointer;
 }
-input:checked + label[for="very"],
-input:checked + label[for="somewhat"],
-input:checked + label[for="not"]{
+input:checked + .custom-label-icon{
     background: url(checked-radio-button.png) no-repeat;
+}
+.empty-block{
+    display: block;
+    height: 100px;
+}
+.main-content{
+    width: 450px;
+    margin: auto;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container{
+        max-width: 680px;
+    }
+}
+@media (max-width: 576px) {
+    .form-check-inline{
+        display: block;
+        text-align: left;
+        margin: 10px auto;
+        width: 200px;
+        left: 12%;
+    }
 }

@@ -1,3 +1,6 @@
+from werkzeug.security import generate_password_hash
+from werkzeug.security import check_password_hash
+
 from app import db
 
 
@@ -22,3 +25,23 @@ class SurveyResults(db.Model):
     def is_email_in_database(email):
         return True if SurveyResults.query.filter_by(email=email).first() else False
 
+
+class AdminUsers(db.Model):
+    __tablename__ = "admin_users"
+
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), index=True, unique=True)
+    password_hash = db.Column(db.String(64))
+
+    def __repr__(self):
+        return f'Admin user: {self.username}'
+
+    def set_password_hash(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password_hash(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    @staticmethod
+    def is_username_in_database(username):
+        return True if AdminUsers.query.filter_by(username=username).first() else False
