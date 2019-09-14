@@ -52,4 +52,7 @@ input:checked + .custom-label-icon{
         width: 200px;
         left: 12%;
     }
+    nav ul{
+        margin: auto;
+    }
 }
