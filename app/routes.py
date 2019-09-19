@@ -14,18 +14,16 @@ from app.models import SurveyResults
 from app.models import AdminUsers
 
 
-# TODO: admin page
-# TODO: change admin password
 # TODO: email sending
-# TODO: .env variables
 # TODO: setup.py
+# TODO: unittests
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         email = request.form['email']
         if SurveyResults.is_email_in_database(email):
             flash(f"The user with {email} has already filled the survey", "danger")
-            return render_template('index.html'), 409
+            return redirect(url_for('index'))
 
         data = request.form.to_dict()
         single_results = SurveyResults(**data)
@@ -43,7 +41,7 @@ def login():
         username = request.form['login-username']
         password = request.form['login-password']
         admin_user = AdminUsers.get_admin_user(username)
-        if admin_user is None or not admin_user.check_password_hash(password):
+        if admin_user is None or not admin_user.is_password_correct(password):
             flash(f"Invalid username or password", "danger")
             return redirect(url_for('login'))
         login_user(admin_user)
@@ -66,7 +64,7 @@ def add_admin():
             flash(f"Password does not match", "danger")
             return redirect(url_for('add_admin'))
         admin_user = AdminUsers(username=username)
-        admin_user.set_password_hash(password)
+        admin_user.password = password
         db.session.add(admin_user)
         db.session.commit()
         flash(f"The user '{username}' has been successfully created", "primary")
@@ -84,4 +82,6 @@ def logout():
 @app.route('/admin-panel')
 @login_required
 def admin_panel():
-    return render_template('admin_panel.html')
+    page = request.args.get('page', 1, type=int)
+    survey_results = SurveyResults.query.order_by(SurveyResults.id.desc()).paginate(page=page, per_page=5)
+    return render_template('admin_panel.html', results=survey_results)

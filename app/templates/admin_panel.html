@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if results.total == 0 %}
+        <h2 class="text-center pb-5">No one has completed the survey yet</h2>
+    {% endif %}
+    <table class="table table-bordered ">
+        <thead class="text-center">
+            <tr>
+                <th scope="col">Question</th>
+                <th scope="col">Answer</th>
+            </tr>
+            <tr>
+                {% for result in results.items %}
+                    <th class="subheader bg-info" scope="col" colspan="2">Survey id number: {{ result.id }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">What is your name?</th>
+                <td>{{ result.name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">What is your email address?</th>
+                <td>{{ result.email }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Gender</th>
+                <td>{{ result.gender }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Age</th>
+                <td>{{ result.age }}</td>
+            </tr>
+            <tr>
+                <th scope="row">How would you recommend the event to a friend?</th>
+                <td>{{ result.recommendation }}</td>
+            </tr>
+            <tr>
+                <th scope="row">What did you like about event?</th>
+                <td>{{ result.like }}</td>
+            </tr>
+            <tr>
+                <th scope="row">What did you dislike about event?</th>
+                <td>{{ result.dislike }}</td>
+            </tr>
+            <tr>
+                <th scope="row">How organized was the event?</th>
+                <td>{{ result.organization }}</td>
+            </tr>
+            <tr>
+                <th scope="row">How helpful was the staff?</th>
+                <td>{{ result.helpful }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <nav aria-label="Survey results navigation" class="py-4">
+        <ul class="pagination justify-content-center">
+            {% for page in results.iter_pages() %}
+                {% if page == results.page %}
+                <li class="page-item active">
+                    <a class="page-link" href="{{ url_for('admin_panel', page=page) }}">{{ page }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('admin_panel', page=page) }}">{{ page }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="empty-block"></div>
+{% endblock content %}

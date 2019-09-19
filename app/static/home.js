@@ -24,3 +24,10 @@ function checkPassword(){
         document.getElementById('confirm-password-validation-valid').style.display = 'block';
     }
 }
+
+document.getElementById('like-textarea').onkeyup = function(){
+    document.getElementById('like-length').innerHTML = "Characters left:".concat(' ', 300 - this.value.length);
+}
+document.getElementById('dislike-textarea').onkeyup = function(){
+    document.getElementById('dislike-length').innerHTML = "Characters left:".concat(' ', 300 - this.value.length);
+}

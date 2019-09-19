@@ -6,7 +6,7 @@
         <div class="form-row justify-content-md-center wrapper">
             <div class="form-group col-md-6">
                 <h3>What is your name?</h3>
-                <input class="form-control" type="text" name="name" required >
+                <input class="form-control" type="text" name="name" maxlength="64" required >
                 <div class="invalid-feedback" id="name_validation">
                     <span>Please provide a username.</span>
                 </div>
@@ -16,7 +16,7 @@
         <div class="form-row justify-content-md-center wrapper">
             <div class="form-group col-md-6">
                 <h3>What is your email address?</h3>
-                <input class="form-control" type="email" name="email" required>
+                <input class="form-control" type="email" name="email" maxlength="120" required>
                 <div class="invalid-feedback" id="email_validation">
                     <span>Please provide a email address.</span>
                 </div>
@@ -92,22 +92,24 @@
 
         <div class="form-row justify-content-md-center wrapper">
             <div class="form-group col-lg-6">
-                <h3>What did you like about event:</h3>
-                <textarea class="form-control" name="like" rows="10"></textarea>
+                <h3>What did you like about event?</h3>
+                <textarea class="form-control" name="like" rows="10" maxlength="300" id="like-textarea"></textarea>
+                <span id="like-length">Characters left: 300</span>
             </div>
         </div>
 
         <div class="form-row justify-content-md-center wrapper">
             <div class="form-group col-lg-6">
-                <h3>What did you dislike about event:</h3>
-                <textarea class="form-control" name="dislike" rows="10"></textarea>
+                <h3>What did you dislike about event?</h3>
+                <textarea class="form-control" name="dislike" rows="10" maxlength="300" id="dislike-textarea"></textarea>
+                <span id="dislike-length">Characters left: 300</span>
             </div>
         </div>
 
 
         <div class="form-row justify-content-md-center wrapper">
             <div class="form-group col-lg-8 col-md-10 text-center">
-                <h3>How organized was the event:</h3>
+                <h3>How organized was the event?</h3>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="organization" id="excellent" value="excellent">
                     <label class="form-check-label custom-label-icon" for="excellent">Excellent</label>
@@ -129,7 +131,7 @@
 
         <div class="form-row justify-content-md-center wrapper">
             <div class="form-group col-lg-8 col-md-10 text-center">
-                <h3>How helpful was the staff:</h3>
+                <h3>How helpful was the staff?</h3>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="helpful" id="very" value="very helpful">
                     <label class="form-check-label custom-label-icon" for="very">Very helpful</label>

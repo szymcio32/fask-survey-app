@@ -38,6 +38,10 @@ input:checked + .custom-label-icon{
     margin: auto;
     max-width: 100%;
 }
+.subheader{
+    color: white;
+    text-align: center;
+}
 
 @media (max-width: 768px) {
     .container{

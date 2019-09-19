@@ -18,4 +18,5 @@ login_manager.login_message_category = 'primary'
 
 from app import routes
 from app import models
+from app import errors
 

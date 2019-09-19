@@ -43,11 +43,16 @@ class AdminUsers(db.Model, UserMixin):
     def __repr__(self):
         return f'Admin user: {self.username}'
 
-    def set_password_hash(self, password):
-        self.password_hash = generate_password_hash(password)
+    @property
+    def password(self):
+        return self.password_hash
 
-    def check_password_hash(self, password):
-        return check_password_hash(self.password_hash, password)
+    @password.setter
+    def password(self, value):
+        self.password_hash = generate_password_hash(value)
+
+    def is_password_correct(self, password):
+        return check_password_hash(self.password, password)
 
     @classmethod
     def get_admin_user(cls, username):
