@@ -8,14 +8,15 @@ from flask_login import login_user
 from flask_login import logout_user
 from flask_login import login_required
 
-from app import app
-from app import db
-from app.models import SurveyResults
-from app.models import AdminUsers
+from flask_survey_app.app import app
+from flask_survey_app.app import db
+from flask_survey_app.app.models import SurveyResults
+from flask_survey_app.app.models import AdminUsers
+from flask_survey_app.app.utils import send_email
 
 
-# TODO: email sending
-# TODO: setup.py
+# TODO:refactor
+# TODO: readme
 # TODO: unittests
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,6 +30,7 @@ def index():
         single_results = SurveyResults(**data)
         db.session.add(single_results)
         db.session.commit()
+        send_email(single_results)
         return render_template('success.html')
     return render_template('index.html')
 

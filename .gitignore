@@ -1,0 +1,4 @@
+flask_survey_app/.env
+flask_survey_app/migrations/__pycache__
+flask_survey_app/app/__pycache__
+.idea

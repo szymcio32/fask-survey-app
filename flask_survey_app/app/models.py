@@ -2,8 +2,8 @@ from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 from flask_login import UserMixin
 
-from app import db
-from app import login_manager
+from flask_survey_app.app import db
+from flask_survey_app.app import login_manager
 
 
 @login_manager.user_loader
@@ -26,7 +26,7 @@ class SurveyResults(db.Model):
     helpful = db.Column(db.String(20))
 
     def __repr__(self):
-        return f'SurveyResults {self.name} {self.email}'
+        return f'Name: {self.name} Email: {self.email}'
 
     @staticmethod
     def is_email_in_database(email):
