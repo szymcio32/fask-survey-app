@@ -1,7 +1,8 @@
-from flask_survey_app.app import app
+from flask_survey_app.app import create_app
 
 
 def run_app():
+    app = create_app()
     app.run()
 
 
